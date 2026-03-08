@@ -1,0 +1,28 @@
+@import "tailwindcss"; 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+@theme {
+  --font-dancingscript: "Dancing Script", cursive;
+}
+
+.orbit {
+    animation: orbit 20s linear infinite;
+}
+.orbit-delay-5 {
+    animation: orbit 20s linear infinite -5s;
+}
+.orbit-delay-10 {
+    animation: orbit 20s linear infinite -10s;
+}
+.orbit-delay-15 {
+    animation: orbit 20s linear infinite -15s;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateY(-140px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateY(-140px) rotate(-360deg);
+    }
+}
