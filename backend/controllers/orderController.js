@@ -43,14 +43,18 @@ export const createOrder = async (req, res) => {
                 payment_method_types: ['card'],
                 mode: 'payment',
 
-                line_items: orderItems.map(o => ({
-                    price_data: {
-                        currency: 'inr',
-                        product_data: { name: String(o.item.name).substring(0, 250) },
-                        unit_amount: Math.round(o.item.price * 100)
-                    },
-                    quantity: o.quantity,
-                })),
+                line_items: orderItems.map(o => {
+                    const amount = Math.round(o.item.price * 100);
+                    // Stripe minimum amount check for INR is roughly 5000 paisa (50 INR)
+                    return {
+                        price_data: {
+                            currency: 'inr',
+                            product_data: { name: String(o.item.name).substring(0, 250) },
+                            unit_amount: amount < 50 ? 5000 : amount // Ensure minimum 50 INR per item if price is too low
+                        },
+                        quantity: o.quantity,
+                    }
+                }),
                 customer_email: email,
                 success_url: `${process.env.FRONTEND_URL}/myorder/verify?success=true&session_id={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${process.env.FRONTEND_URL}/checkout?payment_status=cancel`,
