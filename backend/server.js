@@ -26,7 +26,8 @@ app.use(cors({
             process.env.ADMIN_URL
         ].filter(Boolean);
         
-        if (!origin || allowedOrigins.includes(origin)) {
+        // Check if origin matches exactly OR ends with a slash if not provided correctly
+        if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes(origin + '/')) {
             callback(null, true);
         }
         else{
