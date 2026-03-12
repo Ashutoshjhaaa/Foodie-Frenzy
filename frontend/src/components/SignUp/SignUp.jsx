@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaArrowLeft, FaCheckCircle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 
-const url = 'http://localhost:4000'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const AwesomeToast = ({ message, icon }) => (
     <div className='animate-slide-in fixed bottom-6 right-6 flex items-center bg-gradient-to-br from-amber-500 to-amber-600 px-6 py-4 rounded-lg shadow-lg border-2 border-amber-300/20 z-50'>
@@ -44,7 +44,7 @@ const SignUp = () => {
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            const endpoint = isLogin ? `${url}/api/user/login` : `${url}/api/user/register`;
+            const endpoint = isLogin ? `${API_URL}/api/user/login` : `${API_URL}/api/user/register`;
             const payload = isLogin ? { email: formData.email, password: formData.password } : formData;
             const res = await axios.post(endpoint, payload)
 

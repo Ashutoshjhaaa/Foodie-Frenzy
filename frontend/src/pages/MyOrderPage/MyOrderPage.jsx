@@ -4,6 +4,8 @@ import { FiArrowLeft, FiUser, FiMapPin, FiBox, FiCheckCircle } from 'react-icons
 import axios from 'axios'
 import { motion } from 'framer-motion'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
 const MyOrderPage = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -45,7 +47,7 @@ const MyOrderPage = () => {
                 setLoading(false);
                 return;
             }
-            const response = await axios.get('http://localhost:4000/api/orders', {
+            const response = await axios.get(`${API_URL}/api/orders`, {
                 headers: { token }
             });
             if (response.data.success) {
@@ -182,7 +184,7 @@ const MyOrderPage = () => {
                                                         {(order.items || []).map((item, idx) => (
                                                             <div key={idx} className='flex items-center gap-4 bg-white/[0.03] p-2.5 rounded-xl border border-white/5 group-hover:border-amber-500/10 transition-all'>
                                                                 <img
-                                                                    src={`http://localhost:4000/uploads/${item.item?.imageUrl || ''}`}
+                                                                    src={`${API_URL}/uploads/${item.item?.imageUrl || ''}`}
                                                                     alt={item.item?.name || 'Unknown'}
                                                                     className='w-12 h-12 object-cover rounded-lg shadow-lg'
                                                                 />

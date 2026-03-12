@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
 const Order = () => {
   const [orders, setOrders] = useState([]);
-  const url = 'http://localhost:4000/api/orders';
+  const url = `${API_URL}/api/orders`;
 
   const fetchAllOrders = async () => {
     try {

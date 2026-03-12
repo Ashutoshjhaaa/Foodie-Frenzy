@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FaChevronLeft } from 'react-icons/fa';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
 const Checkout = () => {
     const { cartItems, totalAmount, clearCart } = useCart();
     const navigate = useNavigate();
@@ -62,7 +64,7 @@ const Checkout = () => {
         };
 
         try {
-            const response = await axios.post("http://localhost:4000/api/orders", orderData, {
+            const response = await axios.post(`${API_URL}/api/orders`, orderData, {
                 headers: { token }
             });
 

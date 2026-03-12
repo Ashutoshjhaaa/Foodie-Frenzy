@@ -3,6 +3,8 @@ import { useCart } from '../../CartContext/CartContext'
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
 const VerifyPaymentPage = () => {
 
     const { clearCart } = useCart();
@@ -25,7 +27,7 @@ const VerifyPaymentPage = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:4000/api/orders/confirm?session_id=${session_id}`, {
+            const response = await axios.get(`${API_URL}/api/orders/confirm?session_id=${session_id}`, {
                 headers: { token }
             });
             if (response.data.paymentStatus === 'succeeded' || response.data._id) {

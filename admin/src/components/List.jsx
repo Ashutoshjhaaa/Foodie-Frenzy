@@ -5,7 +5,7 @@ import { FiTrash2, FiStar, FiHeart } from 'react-icons/fi';
 
 const List = () => {
     const [list, setList] = useState([]);
-    const API_URL = "http://localhost:4000";
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
     const fetchList = async () => {
         try {

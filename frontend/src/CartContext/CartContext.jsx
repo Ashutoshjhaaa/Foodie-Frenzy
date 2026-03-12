@@ -4,6 +4,7 @@ import { dummyMenuData as menuData1 } from '../assets/OmDD';
 import { dummyMenuData as menuData2 } from '../assets/OmhDD';
 
 const CartContext = createContext();
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 // Helper to find item metadata across all dummy data sources
 const getItemMetadata = (id) => {
@@ -60,7 +61,7 @@ export const CartProvider = ({ children }) => {
         const token = localStorage.getItem('authToken');
         if (!token) return;
         try {
-            const res = await axios.post('http://localhost:4000/api/cart/get', {}, {
+            const res = await axios.post(`${API_URL}/api/cart/get`, {}, {
                 headers: { token }
             });
             if (res.data.success) {
@@ -106,7 +107,7 @@ export const CartProvider = ({ children }) => {
 
         if (token) {
             try {
-                await axios.post('http://localhost:4000/api/cart/add', { itemId: item.id, quantity }, {
+                await axios.post(`${API_URL}/api/cart/add`, { itemId: item.id, quantity }, {
                     headers: { token }
                 });
             } catch (err) {
@@ -121,7 +122,7 @@ export const CartProvider = ({ children }) => {
 
         if (token) {
             try {
-                await axios.post('http://localhost:4000/api/cart/remove', { itemId: item.id }, {
+                await axios.post(`${API_URL}/api/cart/remove`, { itemId: item.id }, {
                     headers: { token }
                 });
             } catch (err) {
@@ -136,7 +137,7 @@ export const CartProvider = ({ children }) => {
 
         if (token) {
             try {
-                await axios.post('http://localhost:4000/api/cart/update', { itemId: item.id, quantity }, {
+                await axios.post(`${API_URL}/api/cart/update`, { itemId: item.id, quantity }, {
                     headers: { token }
                 });
             } catch (err) {

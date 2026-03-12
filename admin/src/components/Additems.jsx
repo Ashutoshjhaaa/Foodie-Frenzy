@@ -3,6 +3,8 @@ import { styles } from '../assets/dummyadmin';
 import { FiUpload, FiHeart, FiStar } from 'react-icons/fi';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+
 const Additems = () => {
 
       const [formData, setFormData] = useState({
@@ -51,7 +53,7 @@ const Additems = () => {
         if (key === 'preview') return;
         payload.append(key, value);
       });
-      const response = await axios.post('http://localhost:4000/api/items', payload, {
+      const response = await axios.post(`${API_URL}/api/items`, payload, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       if (response.status === 201 || response.data.success) {

@@ -4,7 +4,8 @@ import { FaCheckCircle, FaUser, FaLock, FaEye, FaEyeSlash, FaUserPlus, FaEnvelop
 import { iconClass , inputBase} from '../../assets/dummydata';
 import { FaArrowRight } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
-const url = 'http://localhost:4000'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const Login  = ({onLoginSuccess,onClose}) => {
 
@@ -28,7 +29,7 @@ const Login  = ({onLoginSuccess,onClose}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/user/login',FormData);
+      const response = await axios.post(`${API_URL}/api/user/login`,FormData);
 
       if (response.data.success) {
         localStorage.setItem('authToken', response.data.token);
