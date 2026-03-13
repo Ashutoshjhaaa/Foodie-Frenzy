@@ -1,18 +1,21 @@
-# Food Ordering App
+# 🍔 Foodie Frenzy
 
-A full-stack food ordering application with an Admin panel, Frontend for users, and a robust Backend.
+A modern full-stack food ordering application with a user-friendly frontend, a centralized admin panel, and a robust backend.
+
+🔗 **Live Demo**: [https://foodie-frenzyy.vercel.app/](https://foodie-frenzyy.vercel.app/)
 
 ## 🚀 Features
-- **Frontend**: User-friendly interface for browsing menu, adding items to cart, and placing orders.
-- **Admin Panel**: Dashboard to manage food items, view orders, and update statuses.
-- **Backend**: Node.js & Express API with MongoDB integration.
-- **Payment Integration**: Stripe for secure online payments.
-- **Authentication**: JWT-based user authentication.
+- **Frontend**: Seamless food browsing experience, interactive cart, and secure checkout.
+- **Admin Panel**: Complete dashboard for managing food inventory, tracking orders, and updating delivery statuses.
+- **Backend**: Scalable Node.js & Express API integrated with MongoDB for data persistence.
+- **Stripe Integration**: Fully functional and secure online payment processing.
+- **Authentication**: JWT-based secure user sign-up and login.
+- **Responsive Design**: Optimized for all devices using Tailwind CSS and Framer Motion for smooth animations.
 
 ## 📂 Project Structure
-- `/frontend`: React application for users.
-- `/admin`: React dashboard for management.
-- `/backend`: Node.js server and API routes.
+- `frontend/`: React + Vite application for customers.
+- `admin/`: React + Vite dashboard for administrators.
+- `backend/`: Node.js/Express server and RESTful API.
 
 ## 🛠️ Installation & Setup
 
@@ -23,33 +26,48 @@ cd "food app"
 ```
 
 ### 2. Install Dependencies
-Run this in the root, and also inside each folder:
+Install dependencies for all modules:
 ```bash
+# Root
 npm install
-cd frontend && npm install
+
+# Backend
+cd backend && npm install
+
+# Frontend
+cd ../frontend && npm install
+
+# Admin
 cd ../admin && npm install
-cd ../backend && npm install
 ```
 
 ### 3. Environment Variables
-Create a `.env` file in the `backend/` directory with the following:
+Create a `.env` file in the `backend/` directory:
 ```env
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
+# Also add any frontend env variables if needed (e.g., API URL)
 ```
 
 ### 4. Run the Application
-- **Backend**: `npm run dev` (inside /backend)
-- **Frontend**: `npm run dev` (inside /frontend)
-- **Admin**: `npm run dev` (inside /admin)
+Start the development servers:
+- **Backend**: `cd backend && npm run dev`
+- **Frontend**: `cd frontend && npm run dev`
+- **Admin**: `cd admin && npm run dev`
 
 ## 📦 Tech Stack
-- **Frontend**: React.js, Vite
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Styling**: CSS / Tailwind
+- **Frontend**: React 19, Vite, Tailwind CSS 4, Framer Motion, React Icons
+- **Backend**: Node.js, Express 5, MongoDB (Mongoose)
+- **Authentication**: JSON Web Token (JWT), Bcryptjs
 - **Payment**: Stripe API
+- **File Uploads**: Multer
+- **Deployment**: Vercel (Frontend/Admin)
 
 ## 🛡️ License
 Distributed under the MIT License.
+
+## ✍️ Author
+**Ashutosh Jha**
+- GitHub: [@Ashutoshjhaaa](https://github.com/Ashutoshjhaaa)
+- Portfolio: [Foodie Frenzy](https://foodie-frenzyy.vercel.app/)
