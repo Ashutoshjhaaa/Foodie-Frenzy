@@ -24,6 +24,7 @@ const Checkout = () => {
     });
 
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleInputChange = (e) => {
@@ -74,8 +75,10 @@ const Checkout = () => {
                 if (formData.paymentMethod === 'online' && response.data.checkouturl) {
                     window.location.replace(response.data.checkouturl);
                 } else {
-                    alert("Order placed successfully!");
-                    navigate('/myorder');
+                    setSuccessMessage("Order placed successfully!");
+                    setTimeout(() => {
+                        setSuccessMessage('');
+                    }, 5000);
                 }
             }
         } catch (err) {
@@ -225,6 +228,9 @@ const Checkout = () => {
                         </div>
 
                         {error && <p className='text-red-400 mt-2 text-sm italic'>{error}</p>}
+                        {successMessage && <div className='fixed top-10 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black px-8 py-4 rounded-xl font-cinzel text-lg shadow-2xl z-50 animate-bounce'>
+                            {successMessage}
+                        </div>}
                     </motion.div>
 
                     {/* Order Summary */}
