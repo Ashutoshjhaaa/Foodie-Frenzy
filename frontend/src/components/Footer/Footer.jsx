@@ -89,15 +89,15 @@ const Footer = () => {
 
                         </h3>
                         <div className='flex space-x-4'>
-                            {socialIcons.map(({icon: Icon, link, color, label}, idx) =>(
-                                <a target='_blank' href={link} key={idx} className='text-3xl bg-amber-400/10 p-4 rounded-full hover:bg-amber-400/20 hover:scale-110 transition-all duration-300 relative group ' style={{color  }}>
+                            {socialIcons.map(({icon: Icon, color, label}, idx) =>(
+                                <div key={idx} className='text-3xl bg-amber-400/10 p-4 rounded-full hover:bg-amber-400/20 hover:scale-110 transition-all duration-300 relative group cursor-default' style={{color  }}>
                                     <Icon className= 'hover:scale-125 transition-transform'/>
                                     <span className='absolute translate-y-12 top-0 left-1/2 -translate-x-1/2 bg-amber-400 text-black px-2 py-1 rounded text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10'>
                                         {label}
 
                                     </span>
 
-                                </a>
+                                </div>
                             ))}
                         </div>
 
@@ -109,7 +109,7 @@ const Footer = () => {
             {/*  BOTTOM SECTION */}
             <div className='border-t border-amber-800 pt-8 mt-8 text-center'>
                 <p className='text-amber-400 text-lg mb-2 font-playfair'>
-                    &copy: 2026 Foodie-Frenzy. All rights reserved.
+                     2026 Foodie-Frenzy. All rights reserved.
 
                 </p>
                 <div className='group inline-block'>

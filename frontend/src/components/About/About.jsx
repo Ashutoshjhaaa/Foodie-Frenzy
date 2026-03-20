@@ -147,21 +147,6 @@ const About = () => {
                                         <p className='text-amber-100/80 text-lg italic font-serif flex-grow'>
                                             {m.bio}
                                         </p>
-                                        <motion.div className='flex justify-center gap-6 pt-6' initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                                            {m.social && Object.entries(m.social).map(([platform, url]) => {
-                                                const iconMap = {
-                                                    twitter: <FaXTwitter className="w-6 h-6" />,
-                                                    instagram: <FaInstagram className="w-6 h-6" />,
-                                                    facebook: <FaFacebookF className="w-6 h-6" />,
-                                                    linkedin: <FaLinkedinIn className="w-6 h-6" />
-                                                };
-                                                return (
-                                                    <a key={platform} href={url} target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 transition-all duration-300 hover:scale-125">
-                                                        {iconMap[platform]}
-                                                    </a>
-                                                );
-                                            })}
-                                        </motion.div>
                                     </div>
                                 
                             </div>

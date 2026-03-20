@@ -22,12 +22,13 @@ app.use(cors({
         const allowedOrigins = [
             'http://localhost:5173', 
             'http://localhost:5174',
+            'https://foodie-frenzyy.vercel.app',
             process.env.FRONTEND_URL,
             process.env.ADMIN_URL
         ].filter(Boolean);
         
         // Check if origin matches exactly OR ends with a slash if not provided correctly
-        if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes(origin + '/')) {
+        if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
             callback(null, true);
         }
         else{
@@ -35,7 +36,8 @@ app.use(cors({
         }
     },
     credentials: true,
-
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'token']
 })
 )
 app.use(express.json());
