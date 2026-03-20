@@ -9,7 +9,8 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 const MyOrderPage = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [isRefetching, setIsRefetching] = useState(false);
 
     const getPaymentMethodDetails = (method) => {
         switch (method?.toLowerCase()) {
@@ -37,7 +38,7 @@ const MyOrderPage = () => {
     }
 
     const fetchOrders = async (isRefetch = false) => {
-        if (isRefetch) setRefetching(true);
+        if (isRefetch) setIsRefetching(true);
         else setLoading(true);
 
         try {
@@ -45,10 +46,11 @@ const MyOrderPage = () => {
             if (!token) {
                 setError("Please login to view your orders");
                 setLoading(false);
+                setIsRefetching(false);
                 return;
             }
             const response = await axios.get(`${API_URL}/api/orders`, {
-                headers: { token }
+                headers: { token: token }
             });
             if (response.data.success) {
                 setOrders(response.data.data);
@@ -60,7 +62,7 @@ const MyOrderPage = () => {
             setError(errMsg);
         } finally {
             setLoading(false);
-            setRefetching(false);
+            setIsRefetching(false);
         }
     }
 
